@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Response;
 
 class DownloadController extends Controller
 {
-    public function __invoke()
+    public function download()
     {
         $pdf = __DIR__ . "/../../resources/pdf/application.pdf";
 

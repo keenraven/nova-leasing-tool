@@ -31,7 +31,7 @@ class NovaLeasingToolServiceProvider extends ServiceProvider
             $this->routes();
         });
 
-        Route::get('leasing/application', DownloadController::class);
+        Route::get('leasing/application', DownloadController::class . '@download');
 
         $this->provideConfigToScript();
     }
