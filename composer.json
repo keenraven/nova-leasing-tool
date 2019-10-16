@@ -1,0 +1,52 @@
+{
+    "name": "variantgroup/nova-leasing-tool",
+    "description": "A simple leasing calculator for Laravel Nova.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Chris Johnson",
+            "email": "chris@connexionsai.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Variantgroup\\NovaLeasingTool\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Variantgroup\\NovaLeasingTool\\Tests\\": "tests"
+        }
+    },
+    "require": {
+        "php": "^7.2",
+        "laravel/nova": "*",
+        "illuminate/support": "^6.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.4",
+        "orchestra/testbench": "^4.0"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Variantgroup\\NovaLeasingTool\\NovaLeasingToolServiceProvider"
+            ]
+        }
+    },
+    "scripts": {
+        "phpunit": "vendor/bin/phpunit"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "repositories": [
+        {
+            "type": "path",
+            "url": "./nova"
+        }
+    ]
+}
