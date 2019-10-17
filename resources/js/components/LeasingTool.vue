@@ -29,8 +29,9 @@
                         v-model="amount"
                         name="amount"
                         type="text"
-                        placeholder="5000 min"
-                        class="w-48 mr-3 py-3 px-2 text-2xl font-bold text-center"
+                        placeholder="$5,000 min"
+                        onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+                        class="mr-3 py-3 px-2 text-2xl font-bold text-center"
                     >
                 </div>
             </div>
@@ -204,6 +205,7 @@
         data() {
             return {
                 amount: null,
+                intAmount: 0,
                 leases: {
                     '36': null,
                     '48': null,
@@ -218,35 +220,68 @@
          */
         watch: {
             amount(value, oldValue) {
-                if (parseInt(value) > 4999) {
+                
+                let removeDollar = value.toString().replace('$', "")
+                let removeComma = removeDollar.replace(/,/g, "")
+                let clean = removeComma.replace(/(\.[0-9]*?)0+/g, "")
+                this.intAmount = parseInt(clean)
+            },
+
+            intAmount(value, oldValue) {
+                if (value > 4999) {
                     this.loadLeases(value)
                 } else {
                     this.showLeasing = false
                 }
-            }
+            },
+        },
+        /**
+         * Lifecycle Events
+         */
+        mounted() {
+            let amountInput = document.querySelector('input[name="amount"]')
+            amountInput.addEventListener('blur', this.addFormat)
+            amountInput.addEventListener('focus', this.removeFormat)
         },
 
         /**
          * Non reactive properties
          */
         methods: {
+            
+            addFormat(event) {
+                if (event && event.target && event.target.value) {
+                    console.log({ADD: '$' + parseInt(event.target.value).toFixed(2)})
+                    let formatted = '$' + parseInt(event.target.value).toFixed(2)
+                    this.amount = formatted.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                }
+            },
 
+            removeFormat(event) {
+                if (event && event.target && event.target.value) {
+                    let clean = event.target.value.toString().replace(/,/g, "")
+                    clean = clean.replace('.00', '')
+                    this.amount = clean.replace('$', '')
+                }
+            },
+            
             loadLeases(amount) {
                 let $this = this
-
+                
                 _.each(Nova.config.nova_leasing_tool.rates, function (rates, months) {
-                    $this.leases[months] = $this.createLeaseLease(amount, months, rates)   
+                    $this.leases[months] = $this.createLease($this.intAmount, months, rates)   
                 })
 
                 this.showLeasing = true
             },
 
-            createLeaseLease(amount, months, rates) {
+            createLease(amount, months, rates) {
                 let rate = this.rateFactor(amount, rates)
                 
-                return {
-                    payment: '$' + parseFloat(amount * rate).toFixed(2)
-                }
+                let payment = parseFloat(amount * rate).toFixed(2)
+                payment = '$' + payment.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                
+                return { payment }
             },
 
             rateFactor(amount, rates) {
