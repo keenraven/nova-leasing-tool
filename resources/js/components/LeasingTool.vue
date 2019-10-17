@@ -1,7 +1,7 @@
 <template>
     <div class="mx-6 md:mx-auto " style="color: #4A5568; max-width: 60ch">
         <div style="flex flex-col items-center justify-center">
-            <h2 class="pt-12 text-2xl font-bold">Capital Leasing Calculator</h2>
+            <h2 class="pt-12 text-2xl font-bold">Leasing Calculator</h2>
             <div class="text-sm leading-normal">
                 <p class="pt-2" style="max-width: 60ch">
                     Have you considered financing? If not, you should! When the potential tax benefits of leasing are coupled with the conservation of working capital 
@@ -186,7 +186,7 @@
                     <div class="w-full md:w-1/2 flex flex-col justify-center">
                         <p>Steve Morgan</p>
                         <address>Senior Relationship Manager</address>
-                        <address>phone: 952-303-6022</address>
+                        <address>phone: 612-867-1813</address>
                         <address>fax: 866-575-7617  </address> 
                         <a href="mailto:morgans@univest.net" target="_blank" class="no-underline active" style="color: #3182CE">morgans@univest.net</a>
                     </div>
