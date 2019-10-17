@@ -1,6 +1,6 @@
 <?php
 
-namespace Variantgroup\LeasingCalculator\Http;
+namespace Variantgroup\NovaLeasingTool\Http;
 
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Response;
