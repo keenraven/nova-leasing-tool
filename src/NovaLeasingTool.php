@@ -1,11 +1,11 @@
 <?php
 
-namespace Variantgroup\NovaLeaseTool;
+namespace Variantgroup\NovaLeasingTool;
 
 use Laravel\Nova\Nova;
 use Laravel\Nova\Tool;
 
-class NovaLeaseTool extends Tool
+class NovaLeasingTool extends Tool
 {
     /**
      * Perform any tasks that need to happen when the tool is booted.
