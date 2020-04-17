@@ -1,6 +1,6 @@
 <?php
 
-namespace Variantgroup\NovaLeasingTool;
+namespace Variantgroup;
 
 use Laravel\Nova\Nova;
 use Laravel\Nova\Tool;
