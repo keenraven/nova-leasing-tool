@@ -27,9 +27,9 @@ class NovaLeasingToolServiceProvider extends ServiceProvider
             __DIR__.'/../resources/views' => resource_path('views/vendor/nova-leasing-tool'),
         ], 'nova-leasing-tool-views');
 
-        $this->app->booted(function () {
-            $this->routes();
-        });
+        // $this->app->booted(function () {
+        //     $this->routes();
+        // });
 
         Route::get('leasing/application', DownloadController::class . '@download');
 
@@ -39,12 +39,12 @@ class NovaLeasingToolServiceProvider extends ServiceProvider
      /**
      * Register the tool’s routes.
      */
-    protected function routes(): void
-    {
-        if ($this->app->routesAreCached()) {
-            return;
-        }
-    }
+    // protected function routes(): void
+    // {
+    //     if ($this->app->routesAreCached()) {
+    //         return;
+    //     }
+    // }
 
     /**
      * Register the tool’s services.
