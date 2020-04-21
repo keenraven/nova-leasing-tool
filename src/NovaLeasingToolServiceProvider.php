@@ -39,12 +39,12 @@ class NovaLeasingToolServiceProvider extends ServiceProvider
      /**
      * Register the tool’s routes.
      */
-    // protected function routes(): void
-    // {
-    //     if ($this->app->routesAreCached()) {
-    //         return;
-    //     }
-    // }
+    protected function routes(): void
+    {
+        if ($this->app->routesAreCached()) {
+            return $this->app->getCachedRoutesPath();
+        }
+    }
 
     /**
      * Register the tool’s services.
