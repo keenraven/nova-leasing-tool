@@ -42,7 +42,7 @@ class NovaLeasingToolServiceProvider extends ServiceProvider
     protected function routes(): void
     {
         if ($this->app->routesAreCached()) {
-            return $this->app->getCachedRoutesPath();
+            return;
         }
     }
 
