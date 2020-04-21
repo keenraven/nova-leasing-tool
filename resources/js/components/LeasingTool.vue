@@ -217,7 +217,7 @@
          * Events
          */
         watch: {
-            amount(value, oldValue) {
+            amount(value) {
                 
                 let removeDollar = value.toString().replace('$', "")
                 let removeComma = removeDollar.replace(/,/g, "")
@@ -225,9 +225,9 @@
                 this.intAmount = parseInt(clean)
             },
 
-            intAmount(value, oldValue) {
+            intAmount(value) {
                 if (value > 4999) {
-                    this.loadLeases(value)
+                    this.loadLeases()
                 } else {
                     this.showLeasing = false
                 }
@@ -249,7 +249,6 @@
             
             addFormat(event) {
                 if (event && event.target && event.target.value) {
-                    console.log({ADD: '$' + parseInt(event.target.value).toFixed(2)})
                     let formatted = '$' + parseInt(event.target.value).toFixed(2)
                     this.amount = formatted.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
                 }
@@ -263,7 +262,7 @@
                 }
             },
             
-            loadLeases(amount) {
+            loadLeases() {
                 let $this = this
                 
                 _.each(Nova.config.nova_leasing_tool.rates, function (rates, months) {
